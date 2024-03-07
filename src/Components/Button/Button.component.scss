@@ -1,0 +1,18 @@
+button {
+	background-color: transparent;
+	border: white 3px solid;
+	min-width: 10rem;
+	max-width: 20rem;
+	min-height: 4rem;
+	margin: 1rem;
+	padding: 0.5rem;
+	font-size: 1.25rem;
+	text-wrap: wrap;
+	cursor: pointer;
+
+	&[disabled] {
+		cursor: default;
+		border: rgb(51, 51, 51) 3px solid;
+		color: rgb(51, 51, 51);
+	}
+}
