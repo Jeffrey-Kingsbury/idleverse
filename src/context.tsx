@@ -1,16 +1,24 @@
-import { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, FC, PropsWithChildren } from 'react';
 import ls from 'localstorage-slim';
+import { playerInterface } from './interfaces';
 
-export const Context = createContext();
+type providerType = {
+	data: playerInterface;
+	setData: Function;
+}
 
-export const ContextProvider = ({ children }) => {
+export const Context = createContext<providerType | null>(null);
+
+export const ContextProvider: FC<PropsWithChildren> = ({ children }) => {
 	const PLAYER = {
 		consumed: 0,
 		consumers: 0,
 		factory_consumers: 0,
 		factory_1: 0,
+		factory_2: 0,
+		factory_3: 0,
 	};
-	const Storage = (value) => {
+	const Storage = (value: string) => {
 		const storageKey = 'idleverse-save';
 		const localStorageValue = JSON.parse(ls.get(storageKey, { decrypt: true }));
 		const [Value, SetValue] = useState(localStorageValue ? localStorageValue : value);

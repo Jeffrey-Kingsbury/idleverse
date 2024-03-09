@@ -1,10 +1,12 @@
+import React from 'react';
 import './Button.component.scss';
 
 export const Button = ({
-	title,
-	price = null,
+	title = '',
+	price = -1,
+	owned = -1,
 	func = () => {
-		console.log('clicked');
+		return;
 	},
 	disabled = false,
 }) => {
@@ -14,7 +16,13 @@ export const Button = ({
 			onClick={func}
 		>
 			{title}
-			{price && (
+			{owned >= 0 && (
+				<>
+					<br />
+					Owned: {owned}
+				</>
+			)}
+			{price >= 0 && (
 				<>
 					<br />- {price} stars -
 				</>
